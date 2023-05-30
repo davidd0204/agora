@@ -13,6 +13,10 @@
 		.description{
 			text-align: center;
 		}
+
+		.titre{
+			font-family: "Georgia", Arial, sans-serif;
+		}
 		.navigateur{
 			position: relative;
 			text-align: center;
@@ -36,14 +40,27 @@
 			width: 200px;
 			float: left;
 			padding: 5px;
-			border: 1px solid black;
+			
 
 		}
+		ul {
+			list-style-type: none;
+		}
+		#section {
+			text-indent: 20px;
+			width: auto
+			float: left;
+			padding: 5px;
+			height: 640px;
+			
+		}
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="carroussel.js"></script>
 </head>
 <body>
 	<div id="header">
-		<h1 align="center">Accueil</h1>
+		<h1 align="center" class="titre">Accueil</h1>
 	</div>
 	<div id="section">
 		<p class="description">
@@ -55,6 +72,14 @@
 		<p class="description">
 			Feuilletez, Cherchez, Postez, Négociez du matériel high-tech en toute sécurité grâce à Tech Agora ! 
 		</p>
+		<h2 class="titre">Ventes Flash !</h2>
+		<div id="carrousel">
+			<ul>
+				<li><img src="ps1_1.jpg" height="400" width="700"></li>
+				<li><img src="iphone14.jpg" height="400" width="700"></li>
+				<li><img src="samsung_ecran.jpg" height="400" width="400"></li>	
+			</ul>	
+		</div>
 	</div>
 	<div id="nav">
 		<div>
