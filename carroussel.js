@@ -1,77 +1,50 @@
-function afficherImage(idx) {
-    // Affichage du carrousel
-    let images = $("#carrousel img"); // Sélection de toutes les images à l'intérieur du div "carrousel"
-    let nouvelleImage = images.eq(idx); // Sélection du i-ème élément de la liste
-    images.css('display', 'none'); // On cache toutes les images
-    nouvelleImage.css('display', 'block'); // On affiche seulement image voulue
+$(document).ready(function() {
+  var $carrousel = $("#carrousel"); // on cible le bloc du carrousel
+  $img = $("#carrousel img"); // on cible les images contenues dans le carrousel
+  indexImg = $img.length - 1; // on définit l'index du dernier élément
+  i = 0; // on initialise un compteur
+  $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
+  $img.css("display", "none"); // on cache les images
+  $currentImg.css("display", "block"); // on affiche seulement l'image courante
+  //$carrousel.append('<div class="controls"><span class="prev">Precedent</span><span class="next">Suivant</span></div>');
 
-    // Affichage des miniatures
-    let miniatures = $("#section img");
-    let nouvelleMiniature = miniatures.eq(idx);
-    miniatures.css('filter', 'grayscale(100%)'); // On affiche toutes les miniatures en gris
-    nouvelleMiniature.css('filter', ''); // On enlève le filtre sur la bonne image
-}
-
-$(document).ready(function () {
-    console.log("La page est chargée !");
-
-    // On remplie dynamiquement la barre de navigation avec les images du carrousel
-    $("#carrousel img").each(function (idx) {
-        let imgSrc = $(this).attr("src");
-        $("#section").append(`<img class="image-navigation" src="${imgSrc}" />`);
-    })
-
-    // On garde en mémoire l'image en cours, en commençant par la première
-    let currentIdx = 0;
-    afficherImage(currentIdx);
-
-    function changerCurrentIdx(idx) {
-        let nbImages = $("#carrousel img").length;
-        if (idx < 0) {
-            idx += nbImages;
+    /*$('.next').click(function(){ // image suivante
+        i++; // on incrémente le compteur
+        if (i <= indexImg){
+           $img.css('display', 'none'); // on cache les images
+           $currentImg = $img.eq(i); // on définit la nouvelle image
+           $currentImg.css('display', 'block'); // puis on l'affiche
         }
-        currentIdx = idx % nbImages; // On boucle sur les images pour éviter de dépasser leur nombre
-        afficherImage(currentIdx);
+        else{
+           i = indexImg;
+        }
+    });
+    $('.prev').click(function(){ // image précédente
+        i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
+        if (i >= 0){
+            $img.css('display', 'none');
+            $currentImg = $img.eq(i);
+            $currentImg.css('display', 'block');
+        }
+        else{
+            i = 0;
+        }
+    });*/
+    function slideImg() {
+        setTimeout(function() {
+          if (i < indexImg) {
+            // si le compteur est inférieur au dernier index
+            i++; // on l'incrémente
+          } else {
+            // sinon, on le remet à 0 (première image)
+            i = 0;
+          }
+          $img.css("display", "none");
+          $currentImg = $img.eq(i);
+          $currentImg.css("display", "block");
+          slideImg(); // on oublie pas de relancer la fonction à la fin
+        }, 3000); // on définit l'intervalle à 4000 millisecondes (4s)
     }
 
-    // Boutons de navigation
-    $('#suivant').click(function () {
-        changerCurrentIdx(currentIdx + 1);
-    });
-
-    $('#precedent').click(function () {
-        changerCurrentIdx(currentIdx - 1);
-    });
-
-    // Navigation avec les petites images
-    $(".image-navigation").click(function () {
-        // On trouve l'indice de l'image en cours dans la liste
-        let idx = $(".image-navigation").index($(this));
-        changerCurrentIdx(idx);
-    })
-
-    // On garde en mémoire l'état du bouton de défilement
-    let defilementActif = true;
-
-    $('#defilement').click(function () {
-        // On inverse l'état du défilement
-        defilementActif = !defilementActif;
-        if (defilementActif) {
-            $(this).html("Désactiver le défilement");
-        } else {
-            $(this).html("Activer le défilement");
-        }
-    });
-
-    // Fonction de défilement
-    function defilement() {
-        if (defilementActif) {
-            // On ne défile que si la fonctionalité est active
-            changerCurrentIdx(currentIdx + 1);
-        }
-        // On appelle récursivement la même fonction à l'infini, toutes les 2 secondes
-        setTimeout(defilement, 2000);
-    }
-    // On appelle la fonction une première fois
-    defilement();
+  slideImg(); // enfin, on lance la fonction une première fois
 });
