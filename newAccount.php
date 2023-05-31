@@ -35,7 +35,7 @@ if ($db_found) {
     $Email = mysqli_real_escape_string($db_handle, $Email);
 
     // Créer la requête d'insertion
-    $sql = "INSERT INTO `compte_client` (Nom, Prénom, Adresse, Email) VALUES ('$Nom', '$Prénom', '$Adresse', '$Email')";
+    $sql = "INSERT INTO `compte client`(`Nom`, `Prénom`, `Adresse`, `Email`) VALUES ('$Nom','$Prénom','$Adresse','$Email')";
 
     // Exécuter la requête d'insertion
     if (mysqli_query($db_handle, $sql)) {
