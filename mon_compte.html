@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mon compte</title>
+	<style type="text/css">
+		#header
+		{
+			height: auto;
+			background-color: lightblue;
+			padding: 5px;
+			border: 1px solid black;
+		}
+		#section{
+			line-height: auto;
+			background-color: #ffffcc;
+			height: 300px;
+			width: 600px;
+			float: left;
+			padding: 10px;
+			border: 1px solid black;
+			margin-left: 450px;
+			margin-right: 450px;
+			margin-top: 10%;
+		}
+		.titre{
+			font-family: "Georgia", Arial, sans-serif;
+		}
+		.navigateur{
+			position: relative;
+			text-align: center;
+			padding: 5px;
+			border: 4px solid rgb(55, 12, 211);
+			background-color: #6fdada;
+			color: black;
+			outline: none;
+			border-radius: 10px;
+			font-size: 15px;
+			width: 200px;
+			cursor: pointer;
+		}
+		.navigateur:hover{
+			background-color: #207137;
+		}
+		#nav{
+			line-height: 50px;
+			background-color: whitesmoke;
+			height: 300px;
+			width: auto;
+			float: left;
+			padding: 5px;
+			margin-bottom: 10px;
+			top: 0;
+			margin-top: 100%;
+			position: sticky;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<h1 align="center" class="titre">Mon compte</h1>
+	</div>
+	<div id="section">
+		<h1 align="center">Connexion</h1>
+		<form>
+			<table border="1" align="center">
+				<tr>
+					<td>Email : </td>
+					<td><input type="email" name="email"></td>
+				</tr>
+				<tr>
+					<td>Mot de passe : </td>
+					<td><input type="password" name="password"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><button type="submit" name="bouton1">Se connecter</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="nav">
+		<div>
+			<button class="navigateur">Home</button>
+		</div>
+		<div>
+			<a href="accueil.html"><button class="navigateur">Accueil</button></a>
+		</div>
+		<div>
+			<button class="navigateur">Tout Parcourir</button>
+		</div>
+		<div>
+			<button class="navigateur">Notifications</button>
+		</div>
+		<div>
+			<button class="navigateur">Panier</button>
+		</div>
+	</div>
+</body>
+</html>
