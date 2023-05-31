@@ -5,7 +5,7 @@ $(document).ready(function() {
   i = 0; // on initialise un compteur
   $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
   $img.css("display", "none"); // on cache les images
-  $currentImg.css("display", "block"); // on affiche seulement l'image courante
+  $currentImg.fadeIn(); // on affiche seulement l'image courante
   //$carrousel.append('<div class="controls"><span class="prev">Precedent</span><span class="next">Suivant</span></div>');
 
     /*$('.next').click(function(){ // image suivante
@@ -32,18 +32,18 @@ $(document).ready(function() {
     });*/
     function slideImg() {
         setTimeout(function() {
-          if (i < indexImg) {
-            // si le compteur est inférieur au dernier index
-            i++; // on l'incrémente
-          } else {
-            // sinon, on le remet à 0 (première image)
-            i = 0;
-          }
-          $img.css("display", "none");
-          $currentImg = $img.eq(i);
-          $currentImg.css("display", "block");
-          slideImg(); // on oublie pas de relancer la fonction à la fin
-        }, 3000); // on définit l'intervalle à 4000 millisecondes (4s)
+          $currentImg.fadeOut(function() {
+            // Utilisation de fadeOut() pour faire disparaître l'image en fondu
+            if (i < indexImg) {
+              i++;
+            } else {
+              i = 0;
+            }
+            $currentImg = $img.eq(i);
+            $currentImg.fadeIn(); // Utilisation de fadeIn() pour afficher la nouvelle image en fondu
+            slideImg();
+          });
+        }, 3000);
     }
 
   slideImg(); // enfin, on lance la fonction une première fois
