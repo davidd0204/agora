@@ -7,11 +7,17 @@
 	<style type="text/css">
 		#header
 		{
+			height: auto;
 			background-color: lightblue;
 			padding: 5px;
+			border: 1px solid black;
 		}
 		.description{
 			text-align: center;
+		}
+
+		.titre{
+			font-family: "Georgia", Arial, sans-serif;
 		}
 		.navigateur{
 			position: relative;
@@ -30,20 +36,44 @@
 			background-color: #207137;
 		}
 		#nav{
-			line-height: 80px;
+			line-height: 50px;
 			background-color: whitesmoke;
-			height: 640px;
-			width: 200px;
+			height: 300px;
+			width: auto;
 			float: left;
 			padding: 5px;
+			margin-bottom: 10px;
+			top: 0;
+			position: sticky;
 			border: 1px solid black;
-
 		}
+		ul {
+			list-style-type: none;
+		}
+		#section {
+			text-indent: 20px;
+			width: auto
+			float: left;
+			padding: 5px;
+			height: 140px;
+			margin-left: 200px;
+			border: 1px solid black;
+			
+		}
+		#carrousel
+		{
+			position: relative;
+			height: 200px;
+			width: 700px;
+			margin: auto;
+		} 
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="carroussel.js"></script>
 </head>
 <body>
 	<div id="header">
-		<h1 align="center">Accueil</h1>
+		<h1 align="center" class="titre">Accueil</h1>
 	</div>
 	<div id="section">
 		<p class="description">
@@ -55,7 +85,16 @@
 		<p class="description">
 			Feuilletez, Cherchez, Postez, Négociez du matériel high-tech en toute sécurité grâce à Tech Agora ! 
 		</p>
+		
 	</div>
+	<div id="carrousel">
+			<h2 class="titre" align="center">Ventes Flash !</h2>
+			<ul>
+				<li><img src="ps1_1.jpg" height="400" width="700"></li>
+				<li><img src="iphone14.jpg" height="400" width="700"></li>
+				<li><img src="samsung_ecran.jpg" height="400" width="400"></li>	
+			</ul>	
+		</div>
 	<div id="nav">
 		<div>
 			<button class="navigateur">Home</button>
@@ -70,7 +109,7 @@
 			<button class="navigateur">Panier</button>
 		</div>
 		<div>
-			<button class="navigateur">Votre Compte</button>
+			<a href="mon_compte.html"><button class="navigateur">Votre Compte</button></a>
 		</div>
 	</div>
 </body>
