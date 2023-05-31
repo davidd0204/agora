@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulaire paiement</title>
+</head>
+<body>
+    <h3>Veullez saisir vos information de paiement</h3>
+    <form action="traitement.php" method="post">
+        <table border=1>
+            <tr>
+                <td>Type de carte de paiement : </td>
+                <td><input type="radio" name="Paiement" value="Visa">Visa<br>
+                    <input type="radio" name="Paiement" value="MasterCard">MasterCard<br>
+                    <input type="radio" name="Paiement" value="American Express">American Express<br>
+                    <input type="radio" name="Paiement" value=" PayPal">PayPal<br>
+                </td>
+            </tr>
+            <tr>
+                <td>Nom : </td>
+                <td><input type="text" name="Nom"></td>
+            </tr>
+            <tr>
+                <td> Numéro de la carte : </td>
+                <td><input type="number" name="Numéro de la carte"></td>
+            </tr>
+            <tr>
+                <td>Nom affiché dans la carte : </td>
+                <td><input type="text" name="Nom affiché dans la carte"></td>
+            </tr>
+            <tr>
+                <td>Date d’expiration de la carte : </td>
+                <td><input type="month" name="Date d’expiration de la carte"></td>
+            </tr>
+            <tr>
+                <td>Code de sécurité : </td>
+                <td><input type="number" name="Code de sécurité"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="soumettre" value="Soumettre"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
