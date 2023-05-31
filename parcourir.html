@@ -8,7 +8,7 @@
     </script>
     <title>Parcourir les objets tech</title>
   <style>
-    h1 {
+     h1 {
       text-align: center;
       font-size: 45px;
       color: black;
@@ -23,40 +23,82 @@
       border: 1px solid black;
       padding: 8px;
     }
-    img {
-        margin-left: 150px;
-        width: 15%;
-        height: auto;
+    #carrousel {
+    display: flex;
+}
 
-    }
-    
+#carrousel img {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    transition: 500;
+    height: 0px;
+}
+
+#controles {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 20px; 
+    background-color: #2ea44f;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    /* Afficher une main quand on passe la souris dessus */
+    padding: 6px 16px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 600px;
+}
+
+button:hover {
+    background-color: #207137;
+}
+
+.image-navigation {
+    width: 60px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    height: auto;
+    /* Zoomer sur l'image plutôt que déformer en cas de taille différente */
+    cursor: pointer;
+}
+#carrousel img.zoom {
+  transform: scale(1.1); /* Ajustez la valeur pour déterminer le niveau de zoom */
+}
+
   </style>
 </head>
 <body>
     <h1>Parcourir les objets tech</h1>
 
-    <!-- <div id="img">
-        <img src="images/1.jpg" />
-        <img src="images/2.jpg" />
-        <img src="images/3.jpg" />
-        <img src="images/4.jpg" />
-         <img src="images/france5.jpg" />
-        <img src="images/france6.jpg" />
-        <img src="images/france7.jpg" /> 
-    </div> -->
+    <div id="carrousel">
+      <img src="images/1.jpg">
+      <img src="images/2.jpg">
+      <img src="images/3.jpg">
+      <img src="images/4.jpg">
+      <img src="images/5.jpg">
+      <img src="images/6.jpg">
+      <img src="images/7.jpg">
+      <img src="images/8.jpg">
+    </div>
 
   <table>
     <tr>
       <th>Articles réguliers</th>
       <td>
-        <div id="img"><img src="images/1.jpg"/></div>
-        <br>
-        <button id="precedent">Precédent</button>
+        <div id="navigation"></div>
+        <button id="precedent">Précédent</button>
         <button id="suivant">Suivant</button>
+    </div>
     </td>
     </tr>
     <tr>
-      <th>Articles hautes de gamme</th>
+      <th>Articles haut de gamme</th>
       <td>Article 4
         <br>
         <button id="precedent">Precédent</button>
