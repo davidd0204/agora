@@ -1,5 +1,5 @@
 <?php
-$database = "votre_compte";
+$database = "votre compte";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
@@ -8,7 +8,7 @@ $Prénom = isset($_POST["Prénom"]) ? $_POST["Prénom"] : "";
 $Adresse1 = isset($_POST["Adresse_ligne_1"]) ? $_POST["Adresse_ligne_1"] : "";
 $Adresse2 = isset($_POST["Adresse_ligne_2"]) ? $_POST["Adresse_ligne_2"] : "";
 $Ville = isset($_POST["Ville"]) ? $_POST["Ville"] : "";
-$CodeP = isset($_POST["Code_postale"]) ? $_POST["Code_postale"] : "";
+$Code_postal = isset($_POST["Code_postal"]) ? $_POST["Code_postal"] : "";
 $Pays = isset($_POST["Pays"]) ? $_POST["Pays"] : "";
 $NumClient = isset($_POST["Numéro_de_téléphone_du_client"]) ? $_POST["Numéro_de_téléphone_du_client"] : "";
 $erreur = "";
@@ -28,9 +28,9 @@ if ($Adresse2 == "") {
 if ($Ville == "") {
     $erreur .= "Le champ Ville est vide. <br>";
 }
-if ($CodeP == "") {
-    $erreur .= "Le champ Code postal est vide. <br>";
-}
+//if ($Code_postal == "") {
+  //  $erreur .= "Le champ Code postal est vide. <br>";
+//}
 if ($Pays == "") {
     $erreur .= "Le champ Pays est vide. <br>";
 }
@@ -50,13 +50,13 @@ if ($db_found) {
     $Adresse1 = mysqli_real_escape_string($db_handle, $Adresse1);
     $Adresse2 = mysqli_real_escape_string($db_handle, $Adresse2);
     $Ville = mysqli_real_escape_string($db_handle, $Ville);
-    $CodeP = mysqli_real_escape_string($db_handle, $CodeP);
+    $Code_postal = mysqli_real_escape_string($db_handle, $Code_postal);
     $Pays = mysqli_real_escape_string($db_handle, $Pays);
     $NumClient = mysqli_real_escape_string($db_handle, $NumClient);
 
     // Créer la requête d'insertion
-    $sql = "INSERT INTO `livraison` (Nom, Prénom, Adresse_ligne_1, Adresse_ligne_2, Ville, Code_postale, Pays, Numéro_de_téléphone_du_client) 
-            VALUES ('$Nom', '$Prénom', '$Adresse1' , '$Adresse2', '$Ville', '$CodeP', '$Pays', '$NumClient')";
+    $sql = "INSERT INTO `livraison` (Nom, Prénom, Adresse_ligne_1, Adresse_ligne_2, Ville, Code_postal, Pays, Numéro_de_téléphone_du_client) 
+            VALUES ('$Nom', '$Prénom', '$Adresse1' , '$Adresse2', '$Ville', '$Code_postal', '$Pays', '$NumClient')";
 
     // Exécuter la requête d'insertion
     if (mysqli_query($db_handle, $sql)) {
