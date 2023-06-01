@@ -1,34 +1,45 @@
-// Script pour la page "Panier"
-
-function supprimerProduit(event) {
-
-    var boutonSupprimer = event.target;
-    var ligneProduit = boutonSupprimer.parentNode.parentNode;
-    ligneProduit.remove();
-    calculerTotal();
-  }
+$(document).ready(function() {
+    function RécupArticles() {
+      $.ajax({
+        url: 'panier.php',
+        dataType: 'json',
+        success: function(data) {
+          $.each(data, function(index, article) {
+            var row = $('<tr></tr>');
   
-  function calculerTotal() {
-    var lignesProduits = document.querySelectorAll("table tbody tr");
-    var montantTotal = 0;
-    
-    lignesProduits.forEach(function(ligne) {
-      var prix = parseFloat(ligne.querySelector(".prix").textContent);
-      var quantite = parseFloat(ligne.querySelector(".quantite").value);
-      var sousTotal = prix * quantite;
-      montantTotal += sousTotal;
+            row.append('<td>' + article.nom + '</td>');
+            row.append('<td>' + article.description + '</td>');
+            row.append('<td>' + article.prix + ' €</td>');
+            row.append('<td><button>Supprimer</button></td>');
+  
+            $('#article-body').append(row);
+          });
+  
+          calculerTotal();
+        },
+        error: function() {
+          alert('Une erreur s\'est produite lors de la récupération des articles.');
+        }
+      });
+    }
+  
+    RécupArticles();
+  
+    function calculerTotal() {
+      var total = 0;
+  
+      $('table tbody tr').each(function() {
+        var price = parseFloat($(this).find('td:eq(2)').text().trim());
+        if (!isNaN(price)) {
+          total += price;
+        }
+      });
+  
+      $('.montant-total').text('Total: ' + total.toFixed(2) + ' €');
+    }
+  
+    $('#btn-commande').click(function() {
+      window.location.href = 'paiement.html';
     });
-    
-    document.querySelector(".montant-total").textContent = montantTotal.toFixed(2);
-  }
-  
-  var boutonsSupprimer = document.querySelectorAll("button");
-  boutonsSupprimer.forEach(function(bouton) {
-    bouton.addEventListener("click", supprimerProduit);
-  });
-  
-  var quantitesProduits = document.querySelectorAll(".quantite");
-  quantitesProduits.forEach(function(quantite) {
-    quantite.addEventListener("change", calculerTotal);
   });
   
