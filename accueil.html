@@ -37,7 +37,6 @@
 		}
 		#nav{
 			line-height: 50px;
-			background-color: whitesmoke;
 			height: 300px;
 			width: auto;
 			float: left;
@@ -45,18 +44,19 @@
 			margin-bottom: 10px;
 			top: 0;
 			position: sticky;
-			border: 1px solid black;
 		}
 		ul {
 			list-style-type: none;
 		}
 		#section {
 			text-indent: 20px;
-			width: auto
+			width: auto;
 			float: left;
 			padding: 5px;
-			height: 140px;
 			margin-left: 200px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
 			
 			
 		}
@@ -67,25 +67,54 @@
 			width: 700px;
 			margin: auto;
 		} 
+		.description {
+ 			text-align: center;
+  			margin-top: 5px;
+		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="carroussel.js"></script>
 </head>
 <body>
+
 	<div id="header">
 		<h1 align="center" class="titre">Accueil</h1>
+		<div id="nav">
+  			<table border="1">
+   				<a href="main.html">
+      				<button class="navigateur" id="acceuil">Home</button>
+   				</a>
+   				<a href="parcourir.html">
+     				<button id="parcourir" class="navigateur">Tout Parcourir</button>
+   				</a>
+   				<a href="notification.html">
+   				    <button id="notification" class="navigateur">notifications</button>
+    			</a>
+    			<a href="panier.html">
+      				<button id="panier" class="navigateur">Panier</button>
+    			</a>
+    			<a href="nouveauCompte.html">
+      				<button id="compte" class="navigateur">Compte</button>
+    			</a>
+  			</table>
+		</div>
 	</div>
 	<div id="section">
-		<p class="description">
-			Tech Agora est une entreprise française de commerce en ligne. Fondée en 2023 par un groupe de copains étudiants, Tech Agora est spécialisé dans la vente de produits high tech neufs ou d'occasion.
-		</p>
-		<p class="description">
-			Nous permettons aux professionnels tout comme au particulier de mettre en vente tout types d'objects high tech.
-		</p>
-		<p class="description">
-			Feuilletez, Cherchez, Postez, Négociez du matériel high-tech en toute sécurité grâce à Tech Agora ! 
-		</p>
-		
+  		<div class="description" align="center">
+    		<p>
+      			Tech Agora est une entreprise française de commerce en ligne. Fondée en 2023 par un groupe de copains étudiants, Tech Agora est spécialisé dans la vente de produits high tech neufs ou d'occasion.
+   		 	</p>
+  		</div>
+  		<div class="description" align="center">
+    		<p>
+      			Nous permettons aux professionnels tout comme au particulier de mettre en vente tout types d'objects high tech.
+    		</p>
+  		</div>
+  		<div class="description" align="center">
+    		<p>
+    			Feuilletez, Cherchez, Postez, Négociez du matériel high-tech en toute sécurité grâce à Tech Agora !
+    		</p>
+  		</div>
 	</div>
 	<div id="carrousel">
 			<h2 class="titre" align="center">Ventes Flash !</h2>
@@ -95,30 +124,6 @@
 				<li><img src="samsung_ecran.jpg" height="400" width="400"></li>	
 			</ul>	
 		</div>
-	<div id="nav">
-		<div>
-			<a href="main.html">
-				<button class="navigateur">Home</button>
-			</a>
-		</div>
-		<div>
-			<a href="parcourir.html">
-				<button class="navigateur">Tout Parcourir</button>
-			</a>
-		</div>
-		<div>
-			<a href="notification.html">
-				<button class="navigateur">Notifications</button>
-			</a>
-		</div>
-		<div>
-			<a href="panier.html">
-				<button class="navigateur">Panier</button>
-			</a>	
-		</div>
-		<div>
-			<a href="nouveauCompte.html"><button class="navigateur">Votre Compte</button></a>
-		</div>
-	</div>
+	
 </body>
 </html>
