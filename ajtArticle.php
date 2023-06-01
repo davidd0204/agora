@@ -10,15 +10,7 @@ $categorie = isset($_POST["category"]) ? $_POST["category"] : "";
 $prix = isset($_POST["price"]) ? $_POST["price"] : "";
 $typeVente = isset($_POST["sale_type"]) ? $_POST["sale_type"] : "";
 $erreur = "";
-$sql = "SELECT chemin FROM images";
-$result = mysqli_query($db_handle, $sql);
-$images = array();
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $images[] = $row["chemin"];
-    }
-}
 if ($nom == "") {
     $erreur .= "Le champ Nom est vide. <br>";
 }
