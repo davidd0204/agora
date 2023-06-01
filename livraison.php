@@ -1,16 +1,16 @@
 <?php
-$database = "votre compte";
+$database = "votre_compte";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 $Nom = isset($_POST["Nom"]) ? $_POST["Nom"] : "";
 $Prénom = isset($_POST["Prénom"]) ? $_POST["Prénom"] : "";
-$Adresse1 = isset($_POST["Adresse ligne 1"]) ? $_POST["Adresse ligne 1"] : "";
-$Adresse2 = isset($_POST["Adresse ligne 2"]) ? $_POST["Adresse ligne 2"] : "";
+$Adresse1 = isset($_POST["Adresse_ligne_1"]) ? $_POST["Adresse_ligne_1"] : "";
+$Adresse2 = isset($_POST["Adresse_ligne_2"]) ? $_POST["Adresse_ligne_2"] : "";
 $Ville = isset($_POST["Ville"]) ? $_POST["Ville"] : "";
-$CodeP = isset($_POST["Code postale"]) ? $_POST["Code postale"] : "";
+$CodeP = isset($_POST["Code_postale"]) ? $_POST["Code_postale"] : "";
 $Pays = isset($_POST["Pays"]) ? $_POST["Pays"] : "";
-$NumClient = isset($_POST["Numéro de téléphone du client"]) ? $_POST["Numéro de téléphone du client"] : "";
+$NumClient = isset($_POST["Numéro_de_téléphone_du_client"]) ? $_POST["Numéro_de_téléphone_du_client"] : "";
 $erreur = "";
 
 if ($Nom == "") {
@@ -55,7 +55,7 @@ if ($db_found) {
     $NumClient = mysqli_real_escape_string($db_handle, $NumClient);
 
     // Créer la requête d'insertion
-    $sql = "INSERT INTO `livraison` ('Nom', 'Prénom', 'Adresse ligne 1', 'Adresse ligne 2', 'Ville', 'Code postale', 'Pays', 'Numéro de téléphone du client') 
+    $sql = "INSERT INTO `livraison` (Nom, Prénom, Adresse_ligne_1, Adresse_ligne_2, Ville, Code_postale, Pays, Numéro_de_téléphone_du_client) 
             VALUES ('$Nom', '$Prénom', '$Adresse1' , '$Adresse2', '$Ville', '$CodeP', '$Pays', '$NumClient')";
 
     // Exécuter la requête d'insertion
