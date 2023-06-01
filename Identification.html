@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style_general_1.css">
 </head>
 <body>
+    <form action="identification.php" method="post">
     <div id="header">
         <h1 align="center" class="titre">Tech Agora</h1>
             <a href="main.html"><button class="navigateur">Home</button></a>
@@ -21,22 +22,21 @@
     </div>
     <div id="section">
         <h3 align="center">Veullez saisir vos identifiants</h3>
-        <form action="traitement.php" method="post">
             <table border=1 align="center">
                 <tr>
                     <td>Login : </td>
-                    <td><input type="text" name="Nom"></td>
+                    <td><input type="text" name="Email"></td>
                 </tr>
                 <tr>
                     <td>Mot de passe : </td>
-                    <td><input type="password" name="Prénom"></td>
+                    <td><input type="password" name="Mot_de_passe"></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" name="soumettre" value="Soumettre"></td>
                 </tr>
             </table>
-        </form>
+        
     </div>
-    
+</form>    
 </body>
 </html>

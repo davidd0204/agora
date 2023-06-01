@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 30 mai 2023 à 15:17
--- Version du serveur : 5.7.36
+-- Généré le : jeu. 01 juin 2023 à 11:55
+-- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -37,35 +37,12 @@ CREATE TABLE IF NOT EXISTS `compte client` (
   `Password2` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `identification`
+-- Déchargement des données de la table `compte client`
 --
 
-DROP TABLE IF EXISTS `identification`;
-CREATE TABLE IF NOT EXISTS `identification` (
-  `Login` varchar(255) NOT NULL,
-  `Mot de passe` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `livraison`
---
-
-DROP TABLE IF EXISTS `livraison`;
-CREATE TABLE IF NOT EXISTS `livraison` (
-  `Nom` varchar(255) NOT NULL,
-  `Prénom` varchar(255) NOT NULL,
-  `Adresse ligne 1` varchar(255) NOT NULL,
-  `Adresse ligne 2` varchar(255) NOT NULL,
-  `Ville` varchar(255) NOT NULL,
-  `Code postale` int(11) NOT NULL,
-  `Pays` varchar(255) NOT NULL,
-  `Numéro de téléphone du client` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO `compte client` (`Nom`, `Prénom`, `Adresse`, `Email`, `Password1`, `Password2`) VALUES
+('Mouchan', 'Romain', '2 Square Sainte-Clotilde', 'test1', '', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
