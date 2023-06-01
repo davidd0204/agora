@@ -55,7 +55,7 @@ if ($db_found) {
     $NumClient = mysqli_real_escape_string($db_handle, $NumClient);
 
     // Créer la requête d'insertion
-    $sql = "INSERT INTO `compte_client` (Nom, Prénom, Adresse, Ville, CodeP, Pays, NumClient) 
+    $sql = "INSERT INTO `compte_client` (Nom, Prénom, Adresse1, Adresse2, Ville, CodeP, Pays, NumClient) 
             VALUES ('$Nom', '$Prénom', '$Adresse1' , '$Adresse2', '$Ville', '$CodeP', '$Pays', '$NumClient')";
 
     // Exécuter la requête d'insertion
