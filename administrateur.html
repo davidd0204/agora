@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Compte administrateur</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+		$('#utilisateurs').click(function() {
+	        $.ajax({
+	            url: 'fonction_admin.php',
+	            type: 'GET',
+	            dataType: 'json',
+	            success: function(data) {
+	                // Générer le tableau HTML des vendeurs
+	                var html = '<table>';
+	                html += '<tr><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Email</th></tr>';
+	                for (var i = 0; i < data.length; i++) {
+	                    html += '<tr>';
+	                    html += '<td>' + data[i].Nom + '</td>';
+	                    html += '<td>' + data[i].Prénom + '</td>';
+	                    html += '<td>' + data[i].Adresse + '</td>';
+	                    html += '<td>' + data[i].Email + '</td>';
+	                    html += '</tr>';
+	                }
+	                html += '</table>';
+
+	                // Injecter le tableau dans la page HTML
+	                $('#tableau-vendeurs').html(html);
+	            },
+	            error: function() {
+	                alert('Erreur lors de la récupération des vendeurs.');
+	            }
+	    	});
+    });
+	</script>
+	<style type="text/css">
+		h2{
+			color: white;
+		}
+		p{
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="entre">
+		<img src="tech_agora.jpg" border-radius="20%">
+		<h1 align="center" class="title">Bienvenue dans l'espace administrateur !</h1>
+	</div>
+
+	<div id="controles">
+		<table border="1">
+			<a href="main.html">
+				<button id="acceuil">Home</button>
+			</a>
+			<a href="parcourir.html">
+				<button id="parcourir">Tout Parcourir</button>
+			</a>
+			<a href="notification.html">
+				<button id="notification">notifications</button>
+			</a>
+			<a href="panier.html">
+				<button id="panier">Panier</button>
+			</a>
+			<a href="nouveauCompte.html">
+				<button id="compte">Compte</button>
+			</a>
+		</table>
+    </div>
+    <div>
+    	<h2>Articles au catalogue</h2>
+    	<p>Afficher la liste, supprimer, ajouter des articles !</p>
+    	<button id="article">Gérer les articles</button>
+    </div>
+    <div>
+    	<h2>Liste des vendeurs</h2>
+    	<p>Afficher la liste des vendeurs !</p>
+    	<form action="fonction_admin.php" action="post">
+    		<button id="utilisateurs" value="2">Gérer les vendeurs</button>
+    	</form>
+    	<div id="tableau-vendeurs"></div>
+    </div>
+</body>
+</html>
