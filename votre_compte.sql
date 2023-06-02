@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 30 mai 2023 à 15:17
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Généré le : ven. 02 juin 2023 à 10:12
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `compte client` (
   `Adresse` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Password1` varchar(255) NOT NULL,
-  `Password2` varchar(255) NOT NULL
+  `Password2` varchar(255) NOT NULL,
+  `Type` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -62,9 +63,9 @@ CREATE TABLE IF NOT EXISTS `livraison` (
   `Adresse ligne 1` varchar(255) NOT NULL,
   `Adresse ligne 2` varchar(255) NOT NULL,
   `Ville` varchar(255) NOT NULL,
-  `Code postale` int(11) NOT NULL,
+  `Code postale` int NOT NULL,
   `Pays` varchar(255) NOT NULL,
-  `Numéro de téléphone du client` int(11) NOT NULL
+  `Numéro de téléphone du client` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
