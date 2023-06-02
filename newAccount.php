@@ -9,6 +9,9 @@ $Adresse = isset($_POST["Adresse"]) ? $_POST["Adresse"] : "";
 $Email = isset($_POST["Email"]) ? $_POST["Email"] : "";
 $Password1 = isset($_POST["Password1"]) ? $_POST["Password1"] : "";
 $Password2 = isset($_POST["Password2"]) ? $_POST["Password2"] : "";
+$Type = ""; 
+$valeurType="";
+
 $erreur = "";
 
 if ($Nom == "") {
@@ -29,6 +32,17 @@ if ($Password1 == "" || $Password2 == "") {
     $erreur .= "Ce n'est pas le même mot de passe. <br>";
 }
 
+if (isset($_POST["Type"])) {
+    $Type = $_POST["Type"];
+    if ($Type == "vendeur") {
+        $valeurType = 1;
+    } elseif ($Type == "acheteur") {
+        $valeurType = 2;
+    } 
+} else {
+    $erreur .= "Type non sélectionné. <br>";
+}
+
 if ($erreur == "") {
     if ($db_found) {
         // Échapper les caractères spéciaux pour éviter les injections SQL
@@ -47,7 +61,7 @@ if ($erreur == "") {
             echo "L'adresse e-mail est déjà utilisée. Veuillez en choisir une autre.";
         } else {
             // Insérer les données dans la base de données
-            $sql = "INSERT INTO `compte client`(`Nom`, `Prénom`, `Adresse`, `Email`, `Password1`, `Password2`) VALUES ('$Nom', '$Prénom', '$Adresse', '$Email', '$Password1', '$Password2')";
+            $sql = "INSERT INTO `compte client`(`Nom`, `Prénom`, `Adresse`, `Email`, `Password1`, `Password2`, `Type`) VALUES ('$Nom', '$Prénom', '$Adresse', '$Email', '$Password1', '$Password2', '$valeurType')";
 
             // Exécuter la requête d'insertion
             if (mysqli_query($db_handle, $sql)) {
