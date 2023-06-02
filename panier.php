@@ -2,25 +2,31 @@
 $database = "ScriptSQL";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
-$query = "SELECT * FROM articles";
-        $result = mysqli_query($conn, $query);
+if ($db_found) {
+    $query = "SELECT * FROM articles";
+    $result = mysqli_query($db_handle, $query);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>" . $row['nom'] . "</td>";
-            echo "<td>" . $row['description'] . "</td>";
-            echo "<td>" . $row['prix'] . " €</td>";
-            echo "<td><button>Supprimer</button></td>";
-            echo "</tr>";
-        }
+    $articles = array(); // Tableau pour stocker les articles
 
-        mysqli_close($conn);
-        ?>
-    </table>
-    
-    <div class="total">
-        <h2 class="montant-total">Total: 25.00 €</h2>
-        <button>Passer à la commande</button>
-    </div>
-</body>
-</html>
+    while ($row = mysqli_fetch_assoc($result)) {
+        $article = array(
+            'nom' => $row['nom'],
+            'description' => $row['description'],
+            'prix' => $row['prix']
+        );
+
+        $articles[] = $article; // Ajouter l'article au tableau des articles
+    }
+
+    mysqli_close($db_handle);
+
+    // Encoder les articles en JSON
+    $articles_json = json_encode($articles);
+
+    // Envoyer les données JSON en réponse
+    header('Content-Type: application/json');
+    echo $articles_json;
+} else {
+    echo "Erreur de connexion à la base de données.";
+}
+?>
