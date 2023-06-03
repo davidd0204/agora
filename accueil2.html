@@ -7,6 +7,10 @@
     <script type="text/javascript" src="agora.js"></script>
     <script type="text/javascript" src="carroussel.js"></script>
     <style type="text/css">
+    	#controles a {
+	        text-decoration: none; 
+	        color: inherit; 
+    	}
 		.title {
 			color: floralwhite;
 		}
@@ -48,7 +52,6 @@
 			font-size: 14px;
 			font-weight: 600;
 			transition: background-color 0.3s ease;
-
 		}
 		button:hover {
 			background-color: #207137;
@@ -59,24 +62,11 @@
     		margin: 0 auto;
     		overflow: hidden;
 		}
-
-		}
-		button:hover {
-			background-color: #207137;
-		}
-		#carrousel {
-    		position: relative;
-    		width: 700px;
-    		margin: 0 auto;
-    		overflow: hidden;
-		}
-
 
 		#carrousel img {
 			display: none;
 			max-height: 300px;
 			width: auto;
-
 		}
 		.controls {
 			position: absolute;
@@ -109,54 +99,6 @@
     		margin: auto;
 		}
 
-		#carrousel
-		{
-			position: relative;
-			height: 200px;
-			width: 700px;
-			margin: auto;
-		} 
-		a {
-            text-decoration: none; /* Retire le soulignement du lien */
-        }
-    </style>
-
-
-    <style type="text/css">
-
-		}
-		.controls {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			padding: 10px;
-			background-color: rgba(0, 0, 0, 0.5);
-			color: white;
-		}
-		#contact-info {
-			text-align: center;
-			margin-top: 20px;
-		}
-		#google-maps-link {
-			margin: 10px;
-		}
-		#slides {
-    		position: relative;
-    		width: 100%;
-    		height: auto;
-		}
-
-		#slides img {
-    		position: absolute;
-    		top: 0;
-    		left: 0;
-    		right: 0;
-    		bottom: 0;
-    		margin: auto;
-		}
-
-
 
 		#slides img:first-child {
     		position: relative;
@@ -166,38 +108,35 @@
 	
 </head>
 <body>
+    <div class="entre">
+        <img src="tech_agora.jpg" border-radius="20%">
+        <h1 align="center" class="title">Accueil</h1>
+    </div>
 
-
-
-	<div class="entre">
-		<img src="tech_agora.jpg" border-radius="20%">
-		<h1 align="center" class="title">Accueil</h1>
-	</div>
-
-	<div id="controles">
-		<table border="1">
-			<a href="main.html">
-				<button id="acceuil">Home</button>
-			</a>
-			<form action="parcourir.php" method="post">
-			<a href="parcourir.php">
-				<button id="parcourir">Tout Parcourir</button>
-			</a>
-			</form>
-			<a href="notification.html">
-				<button id="notification">notifications</button>
-			</a>
-			<a href="panier.html">
-				<button id="panier">Panier</button>
-			</a>
-			<a href="nouveauCompte.html">
-				<button id="compte">Compte</button>
-			</a>
-		</table>
-
+    <div id="controles">
+        <table border="1">
+            <a href="main.html">
+                <button id="acceuil">Home</button>
+            </a>
+            <form action="parcourir.php" method="post">
+	            <a href="parcourir.php">
+	                <button id="parcourir">Tout Parcourir</button>
+	            </a>
+        	</form>
+            <a href="notification.html">
+                <button id="notification">notifications</button>
+            </a>
+            <a href="panier.html">
+                <button id="panier">Panier</button>
+            </a>
+            <a href="nouveauCompte.html">
+                <button id="compte">Compte</button>
+            </a>
+        </table>
+    </div>
 
     <div id="carrousel">
-		<h2 class="titre" align="center">Ventes Flash !</h2>
+		<h2 class="title" align="center">Ventes Flash !</h2>
 		<div class="controls">
 			<span id="precedent"></span>
 			<span id="suivant"></span>
