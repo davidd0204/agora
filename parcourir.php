@@ -203,6 +203,7 @@ table{
             </select>
             <br>
             <button type="submit">Afficher les caracteristiques de l'article</button>
+            <button type="button">Négocier</button>
         </form>
           </td>
           

@@ -1,4 +1,5 @@
 <?php
+
 $database = "votre compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
