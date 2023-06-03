@@ -1,83 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <title>Tech Agora</title>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script type="text/javascript" src="agora.js">
-    </script>
+    <script type="text/javascript" src="agora.js"></script>
     <script type="text/javascript" src="carroussel.js"></script>
     <style type="text/css">
-    	.title{
-   			color: floralwhite;
+		.title {
+			color: floralwhite;
 		}
-    	body {
-		    text-align: center;
-		    align-items: center;
-		    background-color: white;
-		    background-image: url("tech_fond.jpg");
-		    background-repeat: no-repeat;
-		    background-size: cover;
- 
+		body {
+			text-align: center;
+			align-items: center;
+			background-color: white;
+			background-image: url("tech_fond.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 		.entre {
-    		border: 2px solid black;
-    		padding: 0px;
-    		text-align: center;
-  		}
-  		table {
-    		padding: 0.5em;
-    		border: 0.1em solid rgb(16, 16, 16);
-    		border-radius: 0.5em;
-    		border-collapse: collapse;
+			border: 2px solid black;
+			padding: 0px;
+			text-align: center;
+		}
+		table {
+			padding: 0.5em;
+			border: 0.1em solid rgb(16, 16, 16);
+			border-radius: 0.5em;
+			border-collapse: collapse;
 		}
 		#controles {
-    		padding: 0.5em;
-    		border: 2px solid black;
-    		background-color: rgba(255, 255, 255, 0.9);
-    		border-top: 0px;
+			padding: 0.5em;
+			border: 2px solid black;
+			background-color: rgba(255, 255, 255, 0.9);
+			border-top: 0px;
+			position: relative; /* Ajout de la propriété position */
 		}
 		button {
-    		margin-right: 35px;
-    		margin-left:35px;
-    		/* margin-block-end: 70px; */
-    		background-color: #6fdada;
-    		color: black;
-    		border-radius: 10px;
+			margin-right: 35px;
+			margin-left: 35px;
+			background-color: #6fdada;
+			color: black;
+			border-radius: 10px;
 			cursor: pointer;
-    		/* Afficher une main quand on passe la souris dessus */
-    		padding: 6px 16px;
-    		line-height: 20px;
-    		font-size: 14px;
-    		font-weight: 600;
-    		transition: background-color 0.3s ease;
+			padding: 6px 16px;
+			line-height: 20px;
+			font-size: 14px;
+			font-weight: 600;
+			transition: background-color 0.3s ease;
 		}
-
 		button:hover {
-    		background-color: #207137;
+			background-color: #207137;
 		}
-		#carrousel
-		{
+		#carrousel {
 			position: relative;
 			height: 200px;
 			width: 700px;
 			margin: auto;
-		} 
-    </style>
-
-
+		}
+		#contact-info {
+			margin-top: 20px;
+			text-align: center; /* Ajout de la propriété text-align pour centrer les informations de contact */
+		}
+		#contact-info p,
+		#google-maps-link {
+			margin: 5px;
+		}
+	</style>
+	
 </head>
-
-
 <body>
-
 	<div class="entre">
 		<img src="tech_agora.jpg" border-radius="20%">
 		<h1 align="center" class="title">Accueil</h1>
 	</div>
-
 	<div id="controles">
 		<table border="1">
 			<a href="main.html">
@@ -94,10 +90,9 @@
 			</a>
 			<a href="nouveauCompte.html">
 				<button id="compte">Compte</button>
-			</a>
+			 </a>
 		</table>
     </div>
-
 	<div id="controles">
 		<div class="description" align="center">
     		<p>
@@ -106,7 +101,7 @@
   		</div>
   		<div class="description" align="center">
     		<p>
-      			Nous permettons aux professionnels tout comme au particulier de mettre en vente tout types d'objects high tech.
+      			Nous permettons aux professionnels tout comme aux particuliers de mettre en vente tous types d'objets high tech.
     		</p>
   		</div>
   		<div class="description" align="center">
@@ -116,14 +111,14 @@
   		</div>
   		<div id="carrousel">
 			<h2 class="titre" align="center">Ventes Flash !</h2>
-			<div class="controls">
-       			<button class="prev">Précédent</button>
-        		<button class="next">Suivant</button>
-    		</div>
 			<img src="ps1_1.jpg" height="400" width="700">
 			<img src="iphone14.jpg" height="400" width="700">
 			<img src="samsung_ecran.jpg" height="400" width="400">	
-				
+		</div>
+		<div id="contact-info">
+			<p>E-mail: contact@techagora.com</p>
+			<p>Téléphone: +1 123 456 789</p>
+			<p><a id="google-maps-link" href="https://maps.google.com">Google Maps</a></p>
 		</div>
 	</div>
 </body>
