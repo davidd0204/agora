@@ -65,6 +65,9 @@
 			width: 700px;
 			margin: auto;
 		} 
+		a {
+            text-decoration: none; /* Retire le soulignement du lien */
+        }
     </style>
 
 
@@ -83,9 +86,11 @@
 			<a href="main.html">
 				<button id="acceuil">Home</button>
 			</a>
-			<a href="parcourir.html">
+			<form action="parcourir.php" method="post">
+			<a href="parcourir.php">
 				<button id="parcourir">Tout Parcourir</button>
 			</a>
+			</form>
 			<a href="notification.html">
 				<button id="notification">notifications</button>
 			</a>

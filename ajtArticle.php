@@ -1,14 +1,14 @@
 <?php
-$database = "script";
+$database = "parcourir";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 $nom = isset($_POST["name"]) ? $_POST["name"] : "";
 $description = isset($_POST["description"]) ? $_POST["description"] : "";
 $photo = isset($_POST["photo"]) ? $_POST["photo"] : "";
-$categorie = isset($_POST["category"]) ? $_POST["category"] : "";
-$prix = isset($_POST["price"]) ? $_POST["price"] : "";
-$typeVente = isset($_POST["sale_type"]) ? $_POST["sale_type"] : "";
+$categorie = isset($_POST["categorie"]) ? $_POST["categorie"] : "";
+$prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
+$typeVente = isset($_POST["type_v"]) ? $_POST["type_v"] : "";
 $erreur = "";
 
 if ($nom == "") {
@@ -44,15 +44,30 @@ if ($db_found) {
     $prix = mysqli_real_escape_string($db_handle, $prix);
     $typeVente = mysqli_real_escape_string($db_handle, $typeVente);
 
-    // Créer la requête d'insertion
-    $sql = "INSERT INTO articles (nom, description, photo, categorie, prix, type_vente) VALUES ('$nom','$description','$photo','$categorie','$prix','$typeVente')";
+        switch ($categorie) {
+            case "article_regulier":
+                $sql_reg = "INSERT INTO articles_reg (Nom_article, Description_article, Photo_article, Prix_article, categorie) 
+                            VALUES ('$nom', '$description', '$photo', '$prix', '$categorie')";
+                mysqli_query($db_handle, $sql_reg);
+                break;
 
-    // Exécuter la requête d'insertion
-    if (mysqli_query($db_handle, $sql)) {
-        echo "Données enregistrées avec succès dans la base de données.";
-    } else {
-        echo "Erreur lors de l'enregistrement des données : " . mysqli_error($db_handle);
-    }
+            case "article_haut_de_gamme":
+                $sql_hdg = "INSERT INTO articles_hdg (Nom_article, Description_article, Photo_article, Prix_article, categorie) 
+                            VALUES ('$nom', '$description', '$photo', '$prix', '$categorie')";
+                mysqli_query($db_handle, $sql_hdg);
+                break;
+
+            case "article_rare":
+                $sql_rare = "INSERT INTO articles_rare (Nom_article, Description_article, Photo_article, Prix_article, categorie) 
+                              VALUES ('$nom', '$description', '$photo', '$prix', '$categorie')";
+                mysqli_query($db_handle, $sql_rare);
+                break;
+
+            default:
+                echo "Catégorie invalide.";
+                break;
+        }
+
 
     // Fermer la connexion à la base de données
     mysqli_close($db_handle);

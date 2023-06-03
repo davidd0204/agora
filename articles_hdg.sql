@@ -24,18 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `articles_rare`
+-- Structure de la table `articles_hdg`
 --
 
-DROP TABLE IF EXISTS `articles_rare`;
-CREATE TABLE IF NOT EXISTS `articles_rare` (
-  `ID` int NOT NULL,
+DROP TABLE IF EXISTS `articles_hdg`;
+CREATE TABLE IF NOT EXISTS `articles_hdg` (
+  `ID` int NOT NULL AUTO_INCREMENT,
   `Nom_article` varchar(255) NOT NULL,
   `Photo_article` varchar(255) NOT NULL,
   `Description_article` varchar(255) NOT NULL,
   `Video` varchar(255) NOT NULL,
   `Prix_article` varchar(255) NOT NULL,
-  `categorie` varchar(255) NOT NULL
+  `categorie` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
