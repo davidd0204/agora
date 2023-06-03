@@ -5,63 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Compte administrateur</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
-		$(document).ready(function() {
-    		$('#utilisateurs').click(function() {
-        		$.ajax({
-		            url: 'fonction_admin.php',
-		            type: 'GET',
-		            dataType: 'json',
-		            success: function(data) {
-		                // Générer le tableau HTML des vendeurs
-
-		                var html = '<table>';
-
-		                var html = '<table>';	
-
-		                html += '<tr><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Email</th><th>Action</th></tr>';
-		                for (var i = 0; i < data.length; i++) {
-		                    html += '<tr>';
-		                    html += '<td>' + data[i].Nom + '</td>';
-		                    html += '<td>' + data[i].Prénom + '</td>';
-		                    html += '<td>' + data[i].Adresse + '</td>';
-		                    html += '<td>' + data[i].Email + '</td>';
-		                    html += '<td><button class="supprimer" data-vendeur-id="' + data[i].ID + '">Supprimer</button></td>';
-		                    html += '</tr>';
-		                }
-		                html += '</table>';
-
-		                // Injecter le tableau dans la page HTML
-		                $('#tableau-vendeurs').html(html);
-		            },
-		            error: function() {
-		                alert('Erreur lors de la récupération des vendeurs.');
-		            }
-        		});
-    		});
-
-		    // Gestionnaire d'événements pour le bouton de suppression
-		    $(document).on('click', '.supprimer', function() {
-		        var vendeurId = $(this).data('vendeur-id');
-		        if (confirm('Êtes-vous sûr de vouloir supprimer ce vendeur ?')) {
-		            // Effectuer une requête AJAX pour supprimer le vendeur de la base de données
-		            $.ajax({
-		                url: 'supprimer_vendeur.php',
-		                type: 'POST',
-		                data: { vendeurId: vendeurId },
-		                success: function(response) {
-		                    alert(response);
-		                    // Actualiser la liste des vendeurs après la suppression
-		                    $('#utilisateurs').trigger('click');
-		                },
-		                error: function() {
-		                    alert('Erreur lors de la suppression du vendeur.');
-		                }
-		            });
-		        }
-		    });
-		});
-	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<style type="text/css">
 		h2{
 			color: white;
@@ -70,6 +14,29 @@
 			color: white;
 		}
 	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.supprimer').click(function() {
+				var vendeurId = $(this).data('id');
+
+				$.ajax({
+					url: 'supprimer_vendeur.php',
+					method: 'POST',
+					data: { vendeurId: vendeurId },
+					success: function(response) {
+						alert(response); // Affichez la réponse retournée par supprimer_vendeur.php
+						// Rechargez la page ou effectuez toute autre action nécessaire après la suppression du vendeur
+						location.reload();
+					},
+					error: function() {
+						alert('Erreur lors de la suppression du vendeur.');
+					}
+				});
+			});
+		});
+	</script>
+		
+	
 </head>
 <body>
 	<div class="entre">
@@ -95,19 +62,18 @@
 				<button id="compte">Compte</button>
 			</a>
 		</table>
-    </div>
-    <div>
-    	<h2>Articles au catalogue</h2>
-    	<p>Afficher la liste, supprimer, ajouter des articles !</p>
-    	<button id="article">Gérer les articles</button>
-    </div>
-    <div>
-    	<h2>Liste des vendeurs</h2>
-    	<p>Afficher la liste des vendeurs !</p>
-    	<form action="fonction_admin.php" action="post">
-    		<button id="utilisateurs" value="2">Gérer les vendeurs</button>
-    	</form>
-    	<div id="tableau-vendeurs"></div>
-    </div>
+	</div>
+	<div>
+		<h2>Articles au catalogue</h2>
+		<p>Afficher la liste, supprimer, ajouter des articles !</p>
+		<button id="article">Gérer les articles</button>
+	</div>
+	<div>
+		<h2>Liste des vendeurs</h2>
+		<p>Afficher la liste des vendeurs !</p>
+		<form action="fonction_admin.php" method="post">
+			<button id="utilisateurs" value="2">Gérer les vendeurs</button>
+		</form>
+	</div>
 </body>
 </html>
