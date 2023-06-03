@@ -24,7 +24,20 @@ if ($erreur == "") {
         $result = mysqli_query($db_handle, $sql);
 
         if (mysqli_num_rows($result) > 0) {
-            echo "Connexion réussie.";
+            $row = mysqli_fetch_assoc($result);
+            $typeCompte = $row['Type'];
+
+            if ($typeCompte == 1) {
+                echo "Le compte est un compte vendeur.";
+            } elseif ($typeCompte == 2) {
+                echo "Le compte est un compte acheteur.";
+            } elseif ($typeCompte == 0) {
+                echo "Le compte est un compte admin.";
+                header("Location: administrateur.html");
+                exit();
+            } else {
+                echo "Type de compte inconnu.";
+            }
         } else {
             echo "Email ou mot de passe incorrect.";
         }
@@ -38,4 +51,5 @@ if ($erreur == "") {
     echo "Erreur: <br>" . $erreur;
 }
 ?>
+
 
