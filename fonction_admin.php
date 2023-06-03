@@ -5,6 +5,7 @@
 	if($db_found)
 	{
 		$sql = "SELECT * FROM `compte client` WHERE `Type` = 1";
+
 		$result = mysqli_query($db_handle, $sql);
 		while ($data = mysqli_fetch_assoc($result)) {
 			// code...
@@ -14,6 +15,30 @@
 			echo "Email : " .$data['Email'] . "<br>";
 
 		}
+
+		echo "<h1>Liste des vendeurs</h1>";
+		$result = mysqli_query($db_handle, $sql);
+		echo "<table border=\"1\">";
+		echo "<tr>";
+		echo "<th>" . "ID" . "</th>";
+		echo "<th>" . "Nom" . "</th>";
+		echo "<th>" . "Prénom" . "</th>";
+		echo "<th>" . "Adresse email" . "</th>";
+		echo "<th>" . "Supprimer Vendeur" . "</th>";
+		echo "</tr>";
+		while ($data = mysqli_fetch_assoc($result)) {
+			// code...
+			echo "<tr>";
+			echo "<td>" .$data['id'] . "</td>";
+			echo "<td>" .$data['Nom'] . "</td>";
+			echo "<td>" .$data['Prénom'] . "</td>";
+			echo "<td>" .$data['Email'] . "</td>";
+			echo "<td><button id='supprimer'>Supprimer</button></td>";
+			echo "</tr>";
+
+		}
+		echo "</table>";
+
 	}
 	else
 	{
