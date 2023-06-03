@@ -33,6 +33,8 @@ if ($erreur == "") {
                 echo "Le compte est un compte acheteur.";
             } elseif ($typeCompte == 0) {
                 echo "Le compte est un compte admin.";
+                header("Location: administrateur.html");
+                exit();
             } else {
                 echo "Type de compte inconnu.";
             }

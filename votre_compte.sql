@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `compte client`;
 CREATE TABLE IF NOT EXISTS `compte client` (
+  `id` int NOT NULL,
   `Nom` varchar(255) NOT NULL,
   `Prénom` varchar(255) NOT NULL,
   `Adresse` varchar(255) NOT NULL,

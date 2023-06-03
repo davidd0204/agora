@@ -6,33 +6,57 @@
 	<title>Compte administrateur</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
-		$('#utilisateurs').click(function() {
-	        $.ajax({
-	            url: 'fonction_admin.php',
-	            type: 'GET',
-	            dataType: 'json',
-	            success: function(data) {
-	                // Générer le tableau HTML des vendeurs
-	                var html = '<table>';
-	                html += '<tr><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Email</th></tr>';
-	                for (var i = 0; i < data.length; i++) {
-	                    html += '<tr>';
-	                    html += '<td>' + data[i].Nom + '</td>';
-	                    html += '<td>' + data[i].Prénom + '</td>';
-	                    html += '<td>' + data[i].Adresse + '</td>';
-	                    html += '<td>' + data[i].Email + '</td>';
-	                    html += '</tr>';
-	                }
-	                html += '</table>';
+		$(document).ready(function() {
+    		$('#utilisateurs').click(function() {
+        		$.ajax({
+		            url: 'fonction_admin.php',
+		            type: 'GET',
+		            dataType: 'json',
+		            success: function(data) {
+		                // Générer le tableau HTML des vendeurs
+		                var html = '<table>';
+		                html += '<tr><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Email</th><th>Action</th></tr>';
+		                for (var i = 0; i < data.length; i++) {
+		                    html += '<tr>';
+		                    html += '<td>' + data[i].Nom + '</td>';
+		                    html += '<td>' + data[i].Prénom + '</td>';
+		                    html += '<td>' + data[i].Adresse + '</td>';
+		                    html += '<td>' + data[i].Email + '</td>';
+		                    html += '<td><button class="supprimer" data-vendeur-id="' + data[i].ID + '">Supprimer</button></td>';
+		                    html += '</tr>';
+		                }
+		                html += '</table>';
 
-	                // Injecter le tableau dans la page HTML
-	                $('#tableau-vendeurs').html(html);
-	            },
-	            error: function() {
-	                alert('Erreur lors de la récupération des vendeurs.');
-	            }
-	    	});
-    });
+		                // Injecter le tableau dans la page HTML
+		                $('#tableau-vendeurs').html(html);
+		            },
+		            error: function() {
+		                alert('Erreur lors de la récupération des vendeurs.');
+		            }
+        		});
+    		});
+
+		    // Gestionnaire d'événements pour le bouton de suppression
+		    $(document).on('click', '.supprimer', function() {
+		        var vendeurId = $(this).data('vendeur-id');
+		        if (confirm('Êtes-vous sûr de vouloir supprimer ce vendeur ?')) {
+		            // Effectuer une requête AJAX pour supprimer le vendeur de la base de données
+		            $.ajax({
+		                url: 'supprimer_vendeur.php',
+		                type: 'POST',
+		                data: { vendeurId: vendeurId },
+		                success: function(response) {
+		                    alert(response);
+		                    // Actualiser la liste des vendeurs après la suppression
+		                    $('#utilisateurs').trigger('click');
+		                },
+		                error: function() {
+		                    alert('Erreur lors de la suppression du vendeur.');
+		                }
+		            });
+		        }
+		    });
+		});
 	</script>
 	<style type="text/css">
 		h2{

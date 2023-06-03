@@ -1,5 +1,5 @@
 <?php
-	$database = "votre_compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
+	$database = "votre compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
 	$db_handle = mysqli_connect('localhost', 'root', '');
 	$db_found = mysqli_select_db($db_handle, $database); 
 	if($db_found)
@@ -9,7 +9,7 @@
 		while ($data = mysqli_fetch_assoc($result)) {
 			// code...
 			echo "Nom : " .$data['Nom'] . "<br>";
-			echo "Prenom : " .$data['Prenom'] . "<br>";
+			echo "Prénom : " .$data['Prénom'] . "<br>";
 			echo "Adresse : " .$data['Adresse'] . "<br>";
 			echo "Email : " .$data['Email'] . "<br>";
 
