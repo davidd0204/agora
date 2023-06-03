@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
+
 -- Généré le : sam. 03 juin 2023 à 10:10
+
+-- Généré le : ven. 02 juin 2023 à 10:12
+
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -36,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `compte client` (
   `Email` varchar(255) NOT NULL,
   `Password1` varchar(255) NOT NULL,
   `Password2` varchar(255) NOT NULL,
+
   `Type` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -46,6 +51,10 @@ CREATE TABLE IF NOT EXISTS `compte client` (
 
 INSERT INTO `compte client` (`id`, `Nom`, `Prénom`, `Adresse`, `Email`, `Password1`, `Password2`, `Type`) VALUES
 (1, 'Web', 'Dynamique', '10 rue de la paix', '20alasoutenancesvp@gmail.com', 'blabla', 'blabla', 0);
+
+  `Type` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
