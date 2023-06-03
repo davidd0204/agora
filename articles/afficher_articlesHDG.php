@@ -19,7 +19,7 @@
 
         if ($db_found) {
             // Récupération des caractéristiques de l'article depuis la base de données
-            $sql = "SELECT * FROM articles_HDF WHERE ID = '$ID'";
+            $sql = "SELECT * FROM articles_hdg WHERE ID = '$ID'";
             $result = mysqli_query($db_handle, $sql);
 
             // Vérification si un résultat a été trouvé
