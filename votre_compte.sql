@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 02 juin 2023 à 10:12
+-- Généré le : sam. 03 juin 2023 à 10:10
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -29,15 +29,23 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `compte client`;
 CREATE TABLE IF NOT EXISTS `compte client` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) NOT NULL,
   `Prénom` varchar(255) NOT NULL,
   `Adresse` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Password1` varchar(255) NOT NULL,
   `Password2` varchar(255) NOT NULL,
-  `Type` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `Type` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `compte client`
+--
+
+INSERT INTO `compte client` (`id`, `Nom`, `Prénom`, `Adresse`, `Email`, `Password1`, `Password2`, `Type`) VALUES
+(1, 'Web', 'Dynamique', '10 rue de la paix', '20alasoutenancesvp@gmail.com', 'blabla', 'blabla', 0);
 
 -- --------------------------------------------------------
 
