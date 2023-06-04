@@ -73,7 +73,14 @@ if ($erreur == "") {
 
         // Fermer la connexion à la base de données
         mysqli_close($db_handle);
-    } else {
+        if($valeurType==1){
+                    header("Location: vendeur.php");
+                }
+                if ($valeurType==2) {
+                    // code...
+                    header("Location: client.php");
+                }
+        } else {
         echo "Erreur de connexion à la base de données.";
     }
 } else {

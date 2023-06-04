@@ -131,7 +131,8 @@
                     </table>
 
                     <p>
-                        <a href="#" class="buy-button">Acheter</a>
+                        <a href="#" class="buy-button" type="button">Acheter</a>
+                        <a class="buy-button" href="chat.php">Négocier</a>
                     </p>
 
                     <?php

@@ -1,39 +1,31 @@
+<?php 
+	session_start();
+	if(isset($_SESSION['id'])){
+		$user_id= $_SESSION['id'];
+		$user_name = $_SESSION['Prénom'];
+	}
+	else
+	{
+		echo "Vous n'êtes pas connecté";
+		header("Location: nouveauCompte.html");
+	}
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Compte administrateur</title>
+	<title>Page Vendeur</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<style type="text/css">
-		h2{
-			color: white;
-		}
-		p{
-			color: white;
+		#deco{
+			float: right;
+			padding: 10px;
 		}
 	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.supprimer').click(function() {
-				var vendeurId = $(this).data('id');
-
-				$.ajax({
-					url: 'supprimer_vendeur.php',
-					method: 'POST',
-					data: { vendeurId: vendeurId },
-					success: function(response) {
-						alert(response); // Affichez la réponse retournée par supprimer_vendeur.php
-						// Rechargez la page ou effectuez toute autre action nécessaire après la suppression du vendeur
-						location.reload();
-					},
-					error: function() {
-						alert('Erreur lors de la suppression du vendeur.');
-					}
-				});
-			});
-
 			$('#logout').click(function() {
 				$.ajax({
 					url: 'logout.php',
@@ -48,17 +40,11 @@
 					}
 				});
 			});
-		});
-
-
-	</script>
-	<style type="text/css">
-		#deco{
-			float: right;
-		}
-	</style>
-		
 	
+
+
+	
+	</script>
 </head>
 <body>
 	<div class="entre">
@@ -91,16 +77,5 @@
 		</table>
 	</div>
 	<div>
-		<h2>Articles au catalogue</h2>
-		<p>Afficher la liste, supprimer, ajouter des articles !</p>
-		<button id="article">Gérer les articles</button>
-	</div>
-	<div>
-		<h2>Liste des vendeurs</h2>
-		<p>Afficher la liste des vendeurs !</p>
-		<form action="fonction_admin.php" method="post">
-			<button id="utilisateurs" value="2">Gérer les vendeurs</button>
-		</form>
-	</div>
 </body>
 </html>
