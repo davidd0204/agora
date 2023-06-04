@@ -33,65 +33,36 @@
 					}
 				});
 			});
-
-			$('#logout').click(function() {
-				$.ajax({
-					url: 'logout.php',
-					method: 'POST',
-					success: function(response) {
-						alert(response); // Affichez la réponse retournée par logout.php
-						// Redirigez l'utilisateur vers la page de connexion ou effectuez toute autre action nécessaire après la déconnexion
-						window.location.href = 'nouveauCompte.html';
-					},
-					error: function() {
-						alert('Erreur lors de la déconnexion.');
-					}
-				});
-			});
 		});
-
-
 	</script>
-	<style type="text/css">
-		#deco{
-			float: right;
-		}
-	</style>
 		
 	
 </head>
 <body>
 	<div class="entre">
 		<img src="tech_agora.jpg" border-radius="20%">
-		<h1 align="center" class="title">Bienvenue dans l'espace administrateur !</h1>
-		<div id="deco">
-			<button id="logout">Se déconnecter</button>
-		</div>
+		<h1 align="center" class="title">Bienvenue dans votre espace client !</h1>
 	</div>
 
 	<div id="controles">
 		<table border="1">
-			<a href="main.php">
+			<a href="main.html">
 				<button id="acceuil">Home</button>
 			</a>
-			<form action="parcourir.php" method="post">
-
-			<a href="parcourir.php">
+            <form action="parcourir.php" method="post">
+                <a href="parcourir.php">
+                    <button id="parcourir">Tout Parcourir</button>
+                </a>	<a href="parcourir.html">
+            </form>
 				<button id="parcourir">Tout Parcourir</button>
 			</a>
-
-				<a href="parcourir.php">
-					<button id="parcourir">Tout Parcourir</button>
-				</a>
-
-			</form>
 			<a href="notification.html">
 				<button id="notification">notifications</button>
 			</a>
 			<a href="panier.html">
 				<button id="panier">Panier</button>
 			</a>
-			<a href="nouveauCompte.php">
+			<a href="nouveauCompte.html">
 				<button id="compte">Compte</button>
 			</a>
 		</table>
