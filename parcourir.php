@@ -100,20 +100,19 @@ table{
     <h1>Parcourir les objets tech</h1>
     <div id="controles" align="center">
         <table border="1">
-            <a href="main.html">
+            <a href="main.php">
                 <button id="home">Home</button>
             </a>
             <a href="accueil2.html">
                 <button id="acceuil">Accueil</button>
             </a>
-            </form>
             <a href="notification.html">
                 <button id="notification">notifications</button>
             </a>
             <a href="panier.html">
                 <button id="panier">Panier</button>
             </a>
-            <a href="nouveauCompte.html">
+            <a href="nouveauCompte.php">
                 <button id="compte">Compte</button>
             </a>
         </table>
@@ -203,7 +202,6 @@ table{
             </select>
             <br>
             <button type="submit">Afficher les caracteristiques de l'article</button>
-            <button type="button">Négocier</button>
         </form>
           </td>
           

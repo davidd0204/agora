@@ -33,8 +33,30 @@
 					}
 				});
 			});
+
+			$('#logout').click(function() {
+				$.ajax({
+					url: 'logout.php',
+					method: 'POST',
+					success: function(response) {
+						alert(response); // Affichez la réponse retournée par logout.php
+						// Redirigez l'utilisateur vers la page de connexion ou effectuez toute autre action nécessaire après la déconnexion
+						window.location.href = 'nouveauCompte.html';
+					},
+					error: function() {
+						alert('Erreur lors de la déconnexion.');
+					}
+				});
+			});
 		});
+
+
 	</script>
+	<style type="text/css">
+		#deco{
+			float: right;
+		}
+	</style>
 		
 	
 </head>
@@ -42,11 +64,14 @@
 	<div class="entre">
 		<img src="tech_agora.jpg" border-radius="20%">
 		<h1 align="center" class="title">Bienvenue dans l'espace administrateur !</h1>
+		<div id="deco">
+			<button id="logout">Se déconnecter</button>
+		</div>
 	</div>
 
 	<div id="controles">
 		<table border="1">
-			<a href="main.html">
+			<a href="main.php">
 				<button id="acceuil">Home</button>
 			</a>
 			<form action="parcourir.php" method="post">
@@ -60,7 +85,7 @@
 			<a href="panier.html">
 				<button id="panier">Panier</button>
 			</a>
-			<a href="nouveauCompte.html">
+			<a href="nouveauCompte.php">
 				<button id="compte">Compte</button>
 			</a>
 		</table>

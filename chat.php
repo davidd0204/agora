@@ -4,7 +4,7 @@ session_start();
 
  //Message de sortie simple
  $logout_message = "<div class='msgln'><span class='left-info'>User <b class='user-name-left'>" .
- $_SESSION['name'] . "</b> a quitté la session de chat.</span><br></div>";
+ $_SESSION['Prénom'] . "</b> a quitté la session de chat.</span><br></div>";
 
 
  $myfile = fopen(__DIR__ . "/log.html", "a") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/log.html");
@@ -17,7 +17,7 @@ session_start();
  }
  if (isset($_POST['enter'])){
  if($_POST['name'] != ""){
- $_SESSION['name'] = stripslashes(htmlspecialchars($_POST['name']));
+ $_SESSION['Prénom'] = stripslashes(htmlspecialchars($_POST['name']));
  header("Location: chat.php");
  exit;
  }
@@ -31,7 +31,7 @@ session_start();
         <p>Veuillez saisir votre nom pour continuer!</p>
         <form action="chat.php" method="post">
             <label for="name">Nom: </label>
-            <input type="text" name="name" id="name" value="' . $_SESSION['name'] . '" />
+            <input type="text" name="name" id="name" value="' . $_SESSION['Prénom'] . '" />
             <input type="submit" name="enter" id="enter" value="Soumettre" />
         </form>
     </div>';
@@ -193,14 +193,14 @@ session_start();
 </head>
 <body>
 	<?php
-		if(!isset($_SESSION['name'])){
+		if(!isset($_SESSION['Prénom'])){
 			loginForm();
 		}
 		else{
 			?>
 			<div id="wrapper">
 				<div id="menu">
-					<p class="welcome">Bienvenue, <b><?php echo $_SESSION['name'];?></b></p>
+					<p class="welcome">Bienvenue, <b><?php echo $_SESSION['Prénom'];?></b></p>
 					<p class="logout"><a id="exit" href="#">Quitter la conversation</a></p>
 				</div>
 				<div id="chatbox">

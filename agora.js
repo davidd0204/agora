@@ -21,7 +21,7 @@ $(document).ready(function () {
   // On remplie dynamiquement la barre de navigation avec les images du carrousel
   $("#carrousel img").each(function (idx) {
       let imgSrc = $(this).attr("src");
-      $("#navigation").append(<img class="image-navigation" src="${imgSrc}" />);
+      $("#navigation").append(img class="image-navigation" src="${imgSrc}");
   })
 
   // On garde en mémoire l'image en cours, en commençant par la première

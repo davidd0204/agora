@@ -21,23 +21,34 @@ if ($erreur == "") {
         $Password = mysqli_real_escape_string($db_handle, $Password);
 
         // Vérifier si l'utilisateur existe dans la base de données
-        $sql = "SELECT * FROM `compte client` WHERE `Email` = '$Email' AND `Password1` = '$Password'";
+        $sql = "SELECT id FROM `compte client` WHERE `Email` = '$Email' AND `Password1` = '$Password'";
         $result = mysqli_query($db_handle, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
+        if ($result && mysqli_num_rows($result) > 0) {
+            session_start();
             $row = mysqli_fetch_assoc($result);
             $typeCompte = $row['Type'];
+            $id = $row['id'];
+            $_SESSION['id'] = $id;
+            $_SESSION['Prénom'] = $row['Prénom'];
+            $_SESSION['Nom'] = $row['Nom'];
+            $_SESSION['Email'] = $row['Email'];
 
             if ($typeCompte == 1) {
-                echo "Le compte est un compte vendeur.";
-                header("Location: vendeur.html");
-            } elseif ($typeCompte == 2) {
-                echo "Le compte est un compte acheteur.";
-            } elseif ($typeCompte == 0) {
-                echo "Le compte est un compte admin.";
+                
+                header("Location: vendeur.php");
+                exit();
+                echo "Compte vendeur";
+            } 
+            if ($typeCompte == 2) {
+                
+            } 
+            if ($typeCompte == 0) {
+                
                 header("Location: administrateur.html");
                 exit();
-            } else {
+            } 
+            else {
                 echo "Type de compte inconnu.";
             }
         } else {
