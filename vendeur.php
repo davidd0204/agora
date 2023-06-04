@@ -49,7 +49,7 @@
 <body>
 	<div class="entre">
 		<img src="tech_agora.jpg" border-radius="20%">
-		<h1 align="center" class="title">Bienvenue dans l'espace administrateur !</h1>
+		<h1 align="center" class="title">Bienvenue dans l'espace vendeur !</h1>
 		<div id="deco">
 			<button id="logout">Se déconnecter</button>
 		</div>
@@ -74,6 +74,9 @@
 			<a href="nouveauCompte.php">
 				<button id="compte">Compte</button>
 			</a>
+			<a href="ajtArticle.html">
+				<button id="ajtArticle">Ajouter un article</button>
+            </a>
 		</table>
 	</div>
 	<div>

@@ -1,25 +1,29 @@
 <?php
-   
     session_start();
-
+    
     if(isset($_SESSION['id'])){
-        $user_id= $_SESSION['id'];
+        $user_id = $_SESSION['id'];
         $type = $_SESSION['Type'];
-        if($type==0){
+        
+        if($type == 0){
             header("Location: administrateur.html");
+            exit(); // Assurez-vous d'ajouter cette ligne pour arrêter l'exécution du script après la redirection
         }
-        elseif ($type == 1) {
+        elseif($type == 1){
             header("Location: vendeur.php");
-            // code...
+            exit(); // Assurez-vous d'ajouter cette ligne pour arrêter l'exécution du script après la redirection
+        }
+        elseif($type == 2){
+            header("Location: acheteur.html");
+            exit(); // Assurez-vous d'ajouter cette ligne pour arrêter l'exécution du script après la redirection
+        }
+        else{
+            echo "Type de compte inconnu.";
         }
     }
-    else
-    {
+    else{
         echo "Vous n'êtes pas connecté";
-       
     }
-
-
 ?>
 
 
