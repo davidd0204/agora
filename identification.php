@@ -29,6 +29,7 @@ if ($erreur == "") {
             $typeCompte = $row['Type'];
             $id = $row['id'];
             $_SESSION['id'] = $id;
+
             $_SESSION['Prénom'] = $row['Prénom'];
             $_SESSION['Nom'] = $row['Nom'];
             $_SESSION['Email'] = $row['Email'];
@@ -49,13 +50,24 @@ if ($erreur == "") {
             } else {
                 echo "Type de compte inconnu.";
             }
+
         } else {
             echo "Email ou mot de passe incorrect.";
         }
 
         // Fermer la connexion à la base de données
         mysqli_close($db_handle);
-    } else {
+    }
+        if ($typeCompte == 0) {
+        header("Location: administrateur.html");
+        
+        } elseif ($typeCompte == 2) {
+        // Traiter le type de compte 2 (acheteur)
+        } elseif ($typeCompte == 1) {
+        header("Location: vendeur.php");
+       
+        }    
+    else {
         echo "Erreur de connexion à la base de données.";
     }
 } else {

@@ -7,7 +7,7 @@
 	else
 	{
 		echo "Vous n'êtes pas connecté";
-		header("Location: nouveauCompte.html");
+		header("Location: nouveauCompte.php");
 	}
  ?>
 
