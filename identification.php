@@ -1,5 +1,4 @@
 <?php
-
 $database = "votre compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
@@ -35,20 +34,14 @@ if ($erreur == "") {
             $_SESSION['Email'] = $row['Email'];
 
             if ($typeCompte == 1) {
-                
                 header("Location: vendeur.php");
                 exit();
-                echo "Compte vendeur";
-            } 
-            if ($typeCompte == 2) {
-                
-            } 
-            if ($typeCompte == 0) {
-                
+            } elseif ($typeCompte == 2) {
+                // Traiter le type de compte 2 (acheteur)
+            } elseif ($typeCompte == 0) {
                 header("Location: administrateur.html");
                 exit();
-            } 
-            else {
+            } else {
                 echo "Type de compte inconnu.";
             }
         } else {
@@ -64,5 +57,3 @@ if ($erreur == "") {
     echo "Erreur: <br>" . $erreur;
 }
 ?>
-
-
