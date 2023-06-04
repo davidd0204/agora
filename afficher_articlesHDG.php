@@ -94,6 +94,8 @@
                     $Photo_article = $row["Photo_article"];
                     $Video = $row["Video"];
                     $Description_article = $row["Description_article"];
+                    // Remplacer les caractères \n par des balises <br>
+                    $Description_article = nl2br($Description_article);
                     $Prix_article = $row["Prix_article"];
                     $categorie = $row["categorie"];
 
