@@ -1,5 +1,5 @@
 <?php
-$database = "votre compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
+$database = "votre compte";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
@@ -15,12 +15,10 @@ if ($Password == "") {
 }
 if ($erreur == "") {
     if ($db_found) {
-        // Échapper les caractères spéciaux pour éviter les injections SQL
         $Email = mysqli_real_escape_string($db_handle, $Email);
         $Password = mysqli_real_escape_string($db_handle, $Password);
 
-        // Vérifier si l'utilisateur existe dans la base de données
-        $sql = "SELECT id FROM `compte client` WHERE `Email` = '$Email' AND `Password1` = '$Password'";
+        $sql = "SELECT id, Type FROM `compte client` WHERE `Email` = '$Email' AND `Password1` = '$Password'";
         $result = mysqli_query($db_handle, $sql);
 
         if ($result && mysqli_num_rows($result) > 0) {
@@ -29,7 +27,6 @@ if ($erreur == "") {
             $typeCompte = $row['Type'];
             $id = $row['id'];
             $_SESSION['id'] = $id;
-
             $_SESSION['Prénom'] = $row['Prénom'];
             $_SESSION['Nom'] = $row['Nom'];
             $_SESSION['Email'] = $row['Email'];
@@ -38,36 +35,20 @@ if ($erreur == "") {
                 header("Location: vendeur.php");
                 exit();
             } elseif ($typeCompte == 2) {
-
-                // Traiter le type de compte 2 (acheteur)
-
-                echo "Le compte est un compte acheteur.";
                 header("Location: acheteur.html");
-
+                exit();
             } elseif ($typeCompte == 0) {
                 header("Location: administrateur.html");
                 exit();
             } else {
                 echo "Type de compte inconnu.";
             }
-
         } else {
             echo "Email ou mot de passe incorrect.";
         }
 
-        // Fermer la connexion à la base de données
         mysqli_close($db_handle);
-    }
-        if ($typeCompte == 0) {
-        header("Location: administrateur.html");
-        
-        } elseif ($typeCompte == 2) {
-        // Traiter le type de compte 2 (acheteur)
-        } elseif ($typeCompte == 1) {
-        header("Location: vendeur.php");
-       
-        }    
-    else {
+    } else {
         echo "Erreur de connexion à la base de données.";
     }
 } else {

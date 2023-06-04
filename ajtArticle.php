@@ -11,38 +11,17 @@ $prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
 $typeVente = isset($_POST["type_v"]) ? $_POST["type_v"] : "";
 $erreur = "";
 
-if ($nom == "") {
-    $erreur .= "Le champ Nom est vide. <br>";
-}
-if ($description == "") {
-    $erreur .= "Le champ Description est vide. <br>";
-}
-if ($photo == "") {
-    $erreur .= "Le champ Photo est vide. <br>";
-}
-if ($categorie == "") {
-    $erreur .= "Le champ Catégorie est vide. <br>";
-}
-if ($prix == "") {
-    $erreur .= "Le champ Prix est vide. <br>";
-}
-if ($typeVente == "") {
-    $erreur .= "Le champ Type de vente est vide. <br>";
-}
-if ($erreur == "") {
-    echo "Formulaire valide.";
+if ($nom == "" || $description == "" || $photo == "" || $categorie == "" || $prix == "" || $typeVente == "") {
+    $erreur = "Veuillez remplir tous les champs du formulaire.";
 } else {
-    echo "Erreur: <br>" . $erreur;
-}
+    if ($db_found) {
 
-if ($db_found) {
-    // Échapper les caractères spéciaux pour éviter les injections SQL
-    $nom = mysqli_real_escape_string($db_handle, $nom);
-    $description = mysqli_real_escape_string($db_handle, $description);
-    $photo = mysqli_real_escape_string($db_handle, $photo);
-    $categorie = mysqli_real_escape_string($db_handle, $categorie);
-    $prix = mysqli_real_escape_string($db_handle, $prix);
-    $typeVente = mysqli_real_escape_string($db_handle, $typeVente);
+        $nom = mysqli_real_escape_string($db_handle, $nom);
+        $description = mysqli_real_escape_string($db_handle, $description);
+        $photo = mysqli_real_escape_string($db_handle, $photo);
+        $categorie = mysqli_real_escape_string($db_handle, $categorie);
+        $prix = mysqli_real_escape_string($db_handle, $prix);
+        $typeVente = mysqli_real_escape_string($db_handle, $typeVente);
 
         switch ($categorie) {
             case "article_regulier":
@@ -68,10 +47,20 @@ if ($db_found) {
                 break;
         }
 
+        mysqli_close($db_handle);
 
-    // Fermer la connexion à la base de données
-    mysqli_close($db_handle);
-} else {
-    echo "Erreur de connexion à la base de données.";
+        if (mysqli_errno($db_handle) == 0) {
+            echo "<script>alert('Article ajouté avec succès.');</script>";
+        } else {
+            echo "<script>alert('Article non ajouté.');</script>";
+        }
+
+        echo "<script>window.location.href = 'vendeur.php';</script>";
+        exit();
+    } else {
+        echo "Erreur de connexion à la base de données.";
+    }
 }
+
+echo "Erreur: <br>" . $erreur;
 ?>
