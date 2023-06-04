@@ -132,8 +132,12 @@
 
                     <p>
 
+
                         <a href="#" class="buy-button" type="button">Acheter</a>
                         <a class="buy-button" href="chat.php">Négocier</a>
+
+                        <a href="#" class="buy-button" onclick="acheterArticle(<?php echo $ID; ?>)">Ajouter au panier</a>
+
 
                         <a href="#" class="buy-button" onclick="acheterArticle(<?php echo $ID; ?>)">Ajouter au panier</a>
 
@@ -153,6 +157,7 @@
             echo "Aucun article sélectionné.";
         }
         ?>
+
 
         <script>
             function acheterArticle(articleID) {

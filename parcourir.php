@@ -66,6 +66,15 @@ button {
     font-weight: 600;
     transition: background-color 0.3s ease;
 }
+#nav{
+			width: auto;
+			float: right;
+			padding: 5px;
+			margin-bottom: 10px;
+			top: 0;
+			position: sticky;
+            float:top;
+		}
 
 button:hover {
     background-color: #207137;
@@ -262,7 +271,35 @@ table{
           </td>
         </tr>
   </table>
+
 </div>
+
+
+  <div id="nav">
+		<div>
+			<a href="main.html">
+				<button class="navigateur">Home</button>
+			</a>
+		</div>
+		<div>
+        <a href="accueil2.html">
+            <button class="navigateur">Accueil</button>
+        </a>
+		</div>
+		<div>
+			<a href="notification.html">
+				<button class="navigateur">Notifications</button>
+			</a>
+		</div>
+		<div>
+			<a href="panier.html">
+				<button class="navigateur">Panier</button>
+			</a>	
+		</div>
+		<div>
+			<a href="nouveauCompte.html"><button class="navigateur">Votre Compte</button></a>
+		</div>
+	</div>
 
 </body>
 </html>

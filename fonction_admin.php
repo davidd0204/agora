@@ -1,5 +1,5 @@
 <?php
-    $database = "votre compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
+    $database = "votre compte";
     $db_handle = mysqli_connect('localhost', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
 
@@ -19,7 +19,6 @@
         echo "</tr>";
 
         while ($data = mysqli_fetch_assoc($result)) {
-            // code...
             echo "<tr>";
             echo "<td>" . $data['id'] . "</td>";
             echo "<td>" . $data['Nom'] . "</td>";
@@ -31,7 +30,34 @@
 
         echo "</table>";
     } else {
-        echo "database not found";
+        echo "Database not found";
     }
     mysqli_close($db_handle);
 ?>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.supprimer').click(function() {
+            var vendeurID = $(this).data('id');
+            if (confirm("Voulez-vous supprimer ce vendeur ?")) {
+                $.ajax({
+                    url: 'supprimer_vendeur.php', 
+                    type: 'POST',
+                    data: {id: vendeurID},
+                    success: function(response) {
+                       
+                        console.log(response);
+                       
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Gérer les erreurs
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
