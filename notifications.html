@@ -39,4 +39,34 @@
     </div>
     
 </body>
+<script type="text/javascript">
+  $(document).ready(function() {
+    setInterval(checkForNewMessages, 2000);
+
+    function checkForNewMessages() {
+      $.ajax({
+        url: "log.html",
+        cache: false,
+        success: function(html) {
+          if ($("#chatbox").html() !== html) {
+            $("#chatbox").html(html);
+            showNotification();
+          }
+        }
+      });
+    }
+    function showNotification() {
+      if ("Notification" in window && Notification.permission === "granted") {
+        var notification = new Notification("Nouveau message", {
+          body: "Une nouvelle réponse est disponible dans le chat.",
+          icon: "path/to/notification-icon.png"
+        });
+      }
+    }
+    if ("Notification" in window && Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
+  });
+</script>
+
 </html>
