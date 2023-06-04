@@ -3,7 +3,7 @@
 <head>
     <title>Caractéristiques de l'article</title>
     <style>
-        body {
+            body {
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
@@ -131,7 +131,7 @@
                     </table>
 
                     <p>
-                        <a href="#" class="buy-button">Acheter</a>
+                        <a href="#" class="buy-button" onclick="acheterArticle(<?php echo $ID; ?>)">Ajouter au panier</a>
                     </p>
 
                     <?php
@@ -148,6 +148,26 @@
             echo "Aucun article sélectionné.";
         }
         ?>
+
+        <script>
+            function acheterArticle(articleID) {
+                // Connexion à la base de données
+                var database = "parcourir";
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "supprimer_article_rare.php?article=" + articleID, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert("Article supprimé avec succès.");
+                            location.reload();
+                        } else {
+                            alert("Une erreur s'est produite lors de l'achat de l'article.");
+                        }
+                    }
+                };
+                xhr.send();
+            }
+        </script>
     </div>
 </body>
 </html>

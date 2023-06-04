@@ -32,6 +32,7 @@ if ($erreur == "") {
                 header("Location: vendeur.html");
             } elseif ($typeCompte == 2) {
                 echo "Le compte est un compte acheteur.";
+                header("Location: acheteur.html");
             } elseif ($typeCompte == 0) {
                 echo "Le compte est un compte admin.";
                 header("Location: administrateur.html");
