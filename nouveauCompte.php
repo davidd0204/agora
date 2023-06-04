@@ -29,29 +29,55 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Formulaire création de compte</title>
-    <link rel="stylesheet" type="text/css" href="style_general_1.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <style >
-    .bouton form {
-        display: inline;
-    }
-    .bouton a {
-        display: inline-block;
-        margin: 10px;
-    }
-    
+    button {
+            margin: 0 2px;
+            background-color: #6fdada;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 6px 16px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Autres styles CSS */
+        .entre img {
+            border-radius: 50%;
+        }
+
+        #header {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #section {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        #header .bouton {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
+    <div class="entre"><img src="tech_agora.jpg"></div>
     <div id="header">
         <h1 align="center" class="titre">Tech Agora</h1>
         <div class="bouton">
+
             <a href="main.php"><button class="navigateur">Home</button></a>
+
             <a href="accueil2.html"><button class="navigateur">Accueil</button></a>
             <form action="parcourir.php" method="POST">
                 <a href="parcourir.php"><button class="navigateur">Tout Parcourir</button></a>
             </form>
             <button class="navigateur">Notifications</button>
-            <button class="navigateur">Panier</button>
+            <button href="panier.html" class="navigateur">Panier</button>
         </div>
     </div>
     <div id="section">

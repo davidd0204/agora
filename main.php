@@ -7,7 +7,7 @@
 	else
 	{
 		echo "Vous n'êtes pas connecté";
-		header("Location: nouveauCompte.html");
+		header("Location: nouveauCompte.php");
 	}
 
 ?>
@@ -17,7 +17,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>AGORA FRANCIA</title>
+    <title>Tech Agora</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
