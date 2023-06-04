@@ -148,6 +148,7 @@
             echo "Aucun article sélectionné.";
         }
         ?>
+        
 
         <script>
             function acheterArticle(articleID) {

@@ -1,22 +1,23 @@
 <?php
-    $database = "votre compte"; 
+    $database = "votre compte";
     $db_handle = mysqli_connect('localhost', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
 
-    if ($db_handle) {
-        $vendeurId = isset($_POST["vendeurId"]) ? $_POST["vendeurId"] : "";
-
-        // Supprimer le vendeur de la base de données
-        $sql = "DELETE FROM `compte client` WHERE `Type` = 1 AND `ID` = '$vendeurId'";
-        if (mysqli_query($db_handle, $sql)) {
-            echo "Le vendeur a été supprimé avec succès.";
+    if ($db_found) {
+        if (isset($_POST['id'])) {
+            $vendeurID = $_POST['id'];
+            $sql = "DELETE FROM `compte client` WHERE `id` = $vendeurID";
+            $result = mysqli_query($db_handle, $sql);
+            if ($result) {
+                echo "Vendeur supprimé avec succès";
+            } else {
+                echo "Une erreur s'est produite lors de la suppression du vendeur";
+            }
         } else {
-            echo "Erreur lors de la suppression du vendeur.";
+            echo "ID du vendeur non spécifié";
         }
-
-        // Fermer la connexion à la base de données
-        mysqli_close($db_handle);
     } else {
-        echo "Erreur de connexion à la base de données.";
+        echo "Database not found";
     }
+    mysqli_close($db_handle);
 ?>

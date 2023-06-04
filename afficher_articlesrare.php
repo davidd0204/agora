@@ -70,26 +70,26 @@
         <h1>Caractéristiques de l'article</h1>
 
         <?php
-        // Vérification si l'article a été sélectionné
+
         if (isset($_POST["article"])) {
-            // Récupération de l'ID de l'article sélectionné
+
             $ID = $_POST["article"];
 
-            // Connexion à la base de données
+
             $database = "parcourir";
             $db_handle = mysqli_connect('localhost', 'root', '', 'parcourir');
             $db_found = mysqli_select_db($db_handle, $database);
 
             if ($db_found) {
-                // Récupération des caractéristiques de l'article depuis la base de données
+
                 $sql = "SELECT * FROM articles_rare WHERE ID = '$ID'";
                 $result = mysqli_query($db_handle, $sql);
 
-                // Vérification si un résultat a été trouvé
+
                 if (mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
 
-                    // Récupération des caractéristiques de l'article
+ 
                     $Nom_article = $row["Nom_article"];
                     $Photo_article = $row["Photo_article"];
                     $Video = $row["Video"];
@@ -139,7 +139,7 @@
                     echo "Aucun article trouvé.";
                 }
 
-                // Fermer la connexion à la base de données
+
                 mysqli_close($db_handle);
             } else {
                 echo "Erreur de connexion à la base de données.";
@@ -151,7 +151,7 @@
 
         <script>
             function acheterArticle(articleID) {
-                // Connexion à la base de données
+
                 var database = "parcourir";
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "supprimer_article_rare.php?article=" + articleID, true);
