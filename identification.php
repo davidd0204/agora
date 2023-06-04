@@ -1,5 +1,7 @@
 <?php
-$database = "votre compte"; // Remplacez "votre_base_de_donnees" par le nom de votre base de données
+
+
+$database = "votre compte"; 
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
@@ -20,11 +22,10 @@ if ($erreur == "") {
         $Password = mysqli_real_escape_string($db_handle, $Password);
 
         // Vérifier si l'utilisateur existe dans la base de données
-        $sql = "SELECT id FROM `compte client` WHERE `Email` = '$Email' AND `Password1` = '$Password'";
+        $sql = "SELECT * FROM `compte client` WHERE `Email` = '$Email' AND `Password1` = '$Password'";
         $result = mysqli_query($db_handle, $sql);
 
         if ($result && mysqli_num_rows($result) > 0) {
-            session_start();
             $row = mysqli_fetch_assoc($result);
             $typeCompte = $row['Type'];
             $id = $row['id'];
@@ -32,6 +33,8 @@ if ($erreur == "") {
             $_SESSION['Prénom'] = $row['Prénom'];
             $_SESSION['Nom'] = $row['Nom'];
             $_SESSION['Email'] = $row['Email'];
+
+            session_start();
 
             if ($typeCompte == 1) {
                 header("Location: vendeur.php");
