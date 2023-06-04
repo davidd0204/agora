@@ -6,9 +6,68 @@
     <link rel="stylesheet" type="text/css" href="panier.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="panier.js"></script>
+    <style type="text/css">
+        button {
+            margin: 0 5px;
+            background-color: #6fdada;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 6px 16px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        body {
+            background-color: rgba(229, 247, 143, 0.4);
+        }
+
+        button:hover {
+            background-color: #207137;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .header .bouton {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        table {
+            margin-bottom: 20px;
+        }
+
+        .total {
+            text-align: center;
+        }
+
+        #total button{
+            float: right;
+        }
+    </style>
 </head>
 <body>
     <h1> Votre Panier <img src="tech_agora.jpg" alt="Panier" width="" height="45"></h1>
+    <div class="header">
+        <div class="bouton">
+            <a href="main.php"><button class="navigateur">Home</button></a>
+            <a href="accueil2.html"><button class="navigateur">Accueil</button></a>
+            <form action="parcourir.php" method="POST">
+                <a href="parcourir.php"><button class="navigateur">Tout Parcourir</button></a>
+            </form>
+            <button class="navigateur">Notifications</button>
+            <form action="nouveauCompte.php" action="POST">
+            <button href="nouveauCompte.php" class="navigateur">Compte</button>
+        </form>
+        </div>
+    </div>
     
     <table>
         <thead>
