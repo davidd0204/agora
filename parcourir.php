@@ -52,16 +52,19 @@
 }
 
 button {
-    margin-top: 20px; 
-    background-color: #2ea44f;
-    color: white;
-    border-radius: 6px;
+    margin-right: 35px;
+    margin-left:35px;
+    /* margin-block-end: 70px; */
+    background-color: #6fdada;
+    color: black;
+    border-radius: 10px;
     cursor: pointer;
     /* Afficher une main quand on passe la souris dessus */
     padding: 6px 16px;
     line-height: 20px;
     font-size: 14px;
-    font-weight: 600px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -91,12 +94,22 @@ table{
 }
 
 #section{
-    background-color: black;
+    background-color: rgba(92, 170, 255, 0.7);
+}
+#entre img{
+    border-radius: 50%;
+}
+
+#entre{
+    padding: 0px;
+    text-align: center;
+
 }
 
   </style>
 </head>
 <body>
+    <div id="entre"><img src="tech_agora.jpg"></div>
     <h1>Parcourir les objets tech</h1>
     <div id="controles" align="center">
         <table border="1">
