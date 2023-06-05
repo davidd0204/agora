@@ -47,13 +47,13 @@ if ($nom == "" || $description == "" || $photo == "" || $categorie == "" || $pri
                 break;
         }
 
-        mysqli_close($db_handle);
-
         if (mysqli_errno($db_handle) == 0) {
             echo "<script>alert('Article ajouté avec succès.');</script>";
         } else {
             echo "<script>alert('Article non ajouté.');</script>";
         }
+
+        mysqli_close($db_handle);
 
         echo "<script>window.location.href = 'vendeur.php';</script>";
         exit();
@@ -64,3 +64,4 @@ if ($nom == "" || $description == "" || $photo == "" || $categorie == "" || $pri
 
 echo "Erreur: <br>" . $erreur;
 ?>
+
