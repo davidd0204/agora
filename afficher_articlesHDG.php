@@ -66,6 +66,21 @@
     </style>
 </head>
 <body>
+    <div class="entre"><img src="tech_agora.jpg"></div>
+    <div id="header">
+        <h1 align="center" class="titre">Tech Agora</h1>
+        <div class="bouton">
+
+            <a href="main.php"><button class="navigateur">Home</button></a>
+
+            <a href="accueil2.html"><button class="navigateur">Accueil</button></a>
+            <form action="parcourir.php" method="POST">
+                <a href="nouveauCompte.php"><button class="navigateur">Compte</button></a>
+            </form>
+            <button class="navigateur">Notifications</button>
+            <button href="panier.html" class="navigateur">Panier</button>
+        </div>
+    </div>
     <div class="container">
         <h1>Caractéristiques de l'article</h1>
 
@@ -159,7 +174,8 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
-                            alert("Article supprimé avec succès.");
+                            alert("Article ajouté avec succès.");
+                            header("Location: client.php");
                             location.reload();
                         } else {
                             alert("Une erreur s'est produite lors de l'achat de l'article.");
